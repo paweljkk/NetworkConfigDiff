@@ -1,0 +1,10 @@
+c:\users\twm634\source\repos\Network Diff\Network Diff\bin\Debug\Network Diff.exe.config
+c:\users\twm634\source\repos\Network Diff\Network Diff\bin\Debug\Network Diff.exe
+c:\users\twm634\source\repos\Network Diff\Network Diff\bin\Debug\Network Diff.pdb
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network Diff.csprojAssemblyReference.cache
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network_Diff.Properties.Resources.resources
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network Diff.csproj.GenerateResource.cache
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network Diff.csproj.CoreCompileInputs.cache
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network Diff.exe
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network Diff.pdb
+c:\users\twm634\source\repos\Network Diff\Network Diff\obj\Debug\Network_Diff.Form1.resources
