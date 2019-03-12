@@ -13,6 +13,7 @@ public class rSorting {
 
 public static int bootconfigCounter =0;
 public static int overrideCounter =0;
+public static int aclCounter =0;
 
     public static void main(String[] args) {
        	Scanner reader = new Scanner(System.in);
@@ -37,6 +38,7 @@ public static int overrideCounter =0;
 
         new File(createdir +"\\bootCFGs").mkdir();
         new File(createdir +"\\overrides").mkdir();
+        new File(createdir +"\\acls").mkdir();
 
         String newFile = createdir;
         File root = new File(sortpath); 
@@ -44,6 +46,7 @@ public static int overrideCounter =0;
         find_files(root, newFile, root.toString());
         System.out.println("!!! Number of boot.cfgs: " + bootconfigCounter);
         System.out.println("!!! Number of primary overrides: " + overrideCounter);
+        System.out.println("!!! Number of primary acls: " + aclCounter);
         reader.close();
     }
 
@@ -100,6 +103,52 @@ public static int overrideCounter =0;
                         Files.copy(src, dest, REPLACE_EXISTING);
                         
                         overrideCounter ++;
+                    }catch (Exception ex) {/*System.out.println(ex);*/}
+
+                }
+                if(file.getName().contains("primary#acl"))
+                {
+                    try{
+                        /*//System.out.println(root.toString().replace(basicPath,"").substring(1));
+                        int index = root.toString().lastIndexOf("\\")+1;
+                        Path dest = Paths.get(newFile + "\\acls\\" + root.toString().substring(index, root.toString().length()) +"-acl.cfg", "");
+                        //System.out.println(dest.toString());
+                        Path src = Paths.get(root + "\\" + file.getName(), "");
+                        
+                    
+                        //System.out.println(root.toString() );
+                        
+                        //System.out.println(root.toString().substring(index, root.toString().length()));
+
+                        Files.copy(src, dest, REPLACE_EXISTING);
+                        
+                        aclCounter ++;
+                        */
+
+                        //!!!--------------------above is working
+                        Scanner scanner1 = new Scanner(file);
+                        String aclRouter ="";
+                        String aclIP="";
+                        while (scanner1.hasNextLine()){
+                            String lineFromFile = scanner1.nextLine();
+                            if(lineFromFile.contains("Router Sysname:")){
+                                aclRouter = lineFromFile.substring(18);                                    
+                            }
+                            if(lineFromFile.contains("Router IP:")){
+                                aclIP = lineFromFile.substring(13);
+                                break;                                    
+                            }
+                        }
+                        //System.out.println("acl: "+ aclRouter + "_" + aclIP +"\n");
+
+                        Path dest = Paths.get(newFile + "\\acls\\" + aclRouter + "_" + aclIP + "_acl.cfg", "");
+                        Path src = Paths.get(root + "\\" + file.getName(), "");
+                        
+
+                        Files.copy(src, dest, REPLACE_EXISTING);
+                        
+                        aclCounter ++;
+                        
                     }catch (Exception ex) {/*System.out.println(ex);*/}
 
                 }

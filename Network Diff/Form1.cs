@@ -99,6 +99,7 @@ namespace Network_Diff
                 textBox2.Text = folderBrowserDialog2.SelectedPath;
             }
             
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -116,9 +117,13 @@ namespace Network_Diff
             string pathToSortedLive = "C:\\NetworkSortTool\\" + date + "\\LiveSorted";
             DirectoryInfo directory2 = Directory.CreateDirectory(pathToSortedLive);
 
-            string strCmdText1 = "/" + log + " java -jar rSorting.jar " + textBox1.Text + " " + pathToSortedTNCT;
+            textBox1.Text=textBox1.Text.Trim();
+            string source1 = "\"" + textBox1.Text + "\"";
+            textBox2.Text = textBox2.Text.Trim();
+            string source2 = "\"" + textBox2.Text + "\"";
+            string strCmdText1 = "/" + log + " java -jar rSorting.jar " + source1 + " " + pathToSortedTNCT;
             var sortProcess1 = System.Diagnostics.Process.Start("CMD.exe", strCmdText1);
-            string strCmdText2 = "/" + log + " java -jar rSorting.jar " + textBox2.Text + " " + pathToSortedLive;
+            string strCmdText2 = "/" + log + " java -jar rSorting.jar " + source2 + " " + pathToSortedLive;
             var sortProcess2 = System.Diagnostics.Process.Start("CMD.exe", strCmdText2);
             sortProcess1.WaitForExit();
             sortProcess2.WaitForExit();
