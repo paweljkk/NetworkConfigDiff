@@ -30,7 +30,7 @@ namespace Network_Diff
             textBox2.DragDrop += new DragEventHandler(textBox2_DragDrop);
 
             checkBox1.Checked = true;
-            checkBox2.Enabled = false;
+            
           
 
         }
@@ -112,26 +112,57 @@ namespace Network_Diff
 
             string date = DateTime.Now.ToString("MM.dd.yyyy_HH-mm-ss");
 
-            string pathToSortedTNCT = "C:\\NetworkSortTool\\"+date+"\\TNCTSorted";
+            string pathToSortedTNCT = "C:\\NetworkSortTool\\" + date + "\\TNCTSorted";
             DirectoryInfo directory1 = Directory.CreateDirectory(pathToSortedTNCT);
             string pathToSortedLive = "C:\\NetworkSortTool\\" + date + "\\LiveSorted";
             DirectoryInfo directory2 = Directory.CreateDirectory(pathToSortedLive);
 
-            textBox1.Text=textBox1.Text.Trim();
-            string source1 = "\"" + textBox1.Text + "\"";
-            textBox2.Text = textBox2.Text.Trim();
-            string source2 = "\"" + textBox2.Text + "\"";
-            string strCmdText1 = "/" + log + " java -jar rSorting.jar " + source1 + " " + pathToSortedTNCT;
-            var sortProcess1 = System.Diagnostics.Process.Start("CMD.exe", strCmdText1);
-            string strCmdText2 = "/" + log + " java -jar rSorting.jar " + source2 + " " + pathToSortedLive;
-            var sortProcess2 = System.Diagnostics.Process.Start("CMD.exe", strCmdText2);
-            sortProcess1.WaitForExit();
-            sortProcess2.WaitForExit();
+            if (checkBox1.Checked == true)
+            {
+                textBox1.Text = textBox1.Text.Trim();
+                string source1 = "\"" + textBox1.Text + "\"";
+                textBox2.Text = textBox2.Text.Trim();
+                string source2 = "\"" + textBox2.Text + "\"";
+                string strCmdText1 = "/" + log + " java -jar rSorting.jar " + source1 + " " + pathToSortedTNCT;
+                var sortProcess1 = System.Diagnostics.Process.Start("CMD.exe", strCmdText1);
+                string strCmdText2 = "/" + log + " java -jar rSorting.jar " + source2 + " " + pathToSortedLive;
+                var sortProcess2 = System.Diagnostics.Process.Start("CMD.exe", strCmdText2);
+                sortProcess1.WaitForExit();
+                sortProcess2.WaitForExit();
+            }
+            else if(checkBox2.Checked == true)
+            {
+                textBox1.Text = textBox1.Text.Trim();
+                string source1 = "\"" + textBox1.Text + "\"";
+                textBox2.Text = textBox2.Text.Trim();
+                string source2 = "\"" + textBox2.Text + "\"";
+                string strCmdText1 = "/" + log + " java -jar switchSorting.jar " + source1 + " " + pathToSortedTNCT;
+                var sortProcess1 = System.Diagnostics.Process.Start("CMD.exe", strCmdText1);
+                string strCmdText2 = "/" + log + " java -jar switchSorting.jar " + source2 + " " + pathToSortedLive;
+                var sortProcess2 = System.Diagnostics.Process.Start("CMD.exe", strCmdText2);
+                sortProcess1.WaitForExit();
+                sortProcess2.WaitForExit();
+            }
 
             System.Windows.Forms.MessageBox.Show("Finished:For Sorted Configs go to C:\\NetworkSortTool");
         }
 
-    #endregion
+        #endregion
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                checkBox2.Checked = false;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                checkBox1.Checked = false;
+            }
+        }
     }
 }

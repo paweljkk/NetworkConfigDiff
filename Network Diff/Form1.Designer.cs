@@ -86,18 +86,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(47, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 17);
+            this.label1.Size = new System.Drawing.Size(269, 17);
             this.label1.TabIndex = 4;
-            this.label1.Text = "TNCT Generated Configs Folder";
+            this.label1.Text = "TNCT Generated Switch or Router Folder";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(47, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 17);
+            this.label2.Size = new System.Drawing.Size(237, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Live Configs Folder";
+            this.label2.Text = "Live Router or Switch Configs Folder";
             // 
             // button3
             // 
@@ -118,6 +118,7 @@
             this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Router Configs";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -128,6 +129,7 @@
             this.checkBox2.TabIndex = 8;
             this.checkBox2.Text = "Switch Configs";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // label3
             // 
